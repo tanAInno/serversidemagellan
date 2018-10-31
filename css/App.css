@@ -1,0 +1,276 @@
+body, html {
+    width: 100vw;
+    height: 100vh;
+    background: #1f1d26;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.app-container {
+    width: 100%;
+}
+
+.app-wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width: 100%;
+    border: 1px;
+}
+
+.banner {
+    width: 100%;
+    height: 60px;
+    background: #0e0b16;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #E7EFDD;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.header-text-wrapper {
+    width: 15%;
+    height: 57px;
+    font-size: 18px;
+    color: #E7EFDD;
+    height: 57px;
+    background: #0e0b16;
+    border: 0px;
+}
+
+.header-text-wrapper:focus {
+    outline: none;
+}
+
+.content {
+    width: 100vw;
+    margin-top: 52px;
+    margin-left: -7px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+}
+
+.device-name {
+    font-size: 40px;
+    color: #E7EFDD;
+    font-weight: bold;
+    align-self: flex-start;
+    margin-left: 35px;
+}
+
+.content-row {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    height: 380px;
+    align-items: center;
+    justify-content: center;
+    border: 8px solid #E7EFDD;
+    border-radius: 20px;
+}
+
+.circle-box {
+    width: 300px;
+    height: 300px;
+    border-radius: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 8px solid #4716F6;
+    background: #1f1d26;
+}
+
+.data-number-green {
+    font-size: 60px;
+    color: #32CD32;
+    font-weight: bold;
+    margin-top: -70px;
+}
+
+.data-number-red {
+    font-size: 60px;
+    color: #cc0000;
+    font-weight: bold;
+    margin-top: -70px;
+}
+
+.progress {
+    margin-top: 10px;
+}
+
+.data-header {
+    font-size: 30px;
+    color: #E7EFDD;
+    font-weight: bold;
+}
+
+.data-status-good {
+    font-size: 25px;
+    color: #32CD32;
+    font-weight: bold;
+}
+
+.data-status-bad {
+    font-size: 25px;
+    color: #cc0000;
+    font-weight: bold;
+}
+
+.icon {
+    font-size: 30px;
+    color: #E7EFDD;
+}
+
+.table {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width: 90%;
+    border: 2px solid #E7EFDD;
+    margin-top: 30px;
+    background: #333238;
+}
+
+.table-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50px;
+    background: #170c3f;
+    border-bottom: 2px solid #E7EFDD;
+    align-items: center;
+}
+
+.header-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #E7EFDD;
+    margin-left: 1%;
+    width: 35%;
+}
+
+.header-pm {
+    font-size: 20px;
+    font-weight: bold;
+    color: #E7EFDD;
+    text-align: center;
+    width: 10%;
+}
+
+.header-temp {
+    font-size: 20px;
+    font-weight: bold;
+    color: #E7EFDD;
+    text-align: center;
+    width: 15%;
+}
+
+.header-hum {
+    font-size: 20px;
+    font-weight: bold;
+    color: #E7EFDD;
+    text-align: center;
+    width: 10%;
+}
+
+.header-date {
+    font-size: 20px;
+    font-weight: bold;
+    color: #E7EFDD;
+    margin-left: 4%;
+    width: 25%;
+}
+
+.table-row-odd {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50px;
+    background: #333238;
+    align-items: center;
+}
+
+.row-name-odd {
+    font-size: 20px;
+    color: #E7EFDD;
+    margin-left: 1%;
+    width: 35%;
+}
+
+.row-pm-odd {
+    font-size: 20px;
+    color: #E7EFDD;
+    text-align: center;
+    width: 10%;
+}
+
+.row-temp-odd {
+    font-size: 20px;
+    color: #E7EFDD;
+    text-align: center;
+    width: 15%;
+}
+
+.row-hum-odd {
+    font-size: 20px;
+    color: #E7EFDD;
+    text-align: center;
+    width: 10%;
+}
+
+.row-date-odd {
+    font-size: 20px;
+    color: #E7EFDD;
+    margin-left: 4%;
+    width: 25%;
+}
+
+.table-row-even {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50px;
+    background: #E7EFDD;
+    align-items: center;
+}
+
+.row-name-even {
+    font-size: 20px;
+    color: #0e0b16;
+    margin-left: 1%;
+    width: 35%;
+}
+
+.row-pm-even {
+    font-size: 20px;
+    color: #0e0b16;
+    text-align: center;
+    width: 10%;
+}
+
+.row-temp-even {
+    font-size: 20px;
+    color: #0e0b16;
+    text-align: center;
+    width: 15%;
+}
+
+.row-hum-even {
+    font-size: 20px;
+    color: #0e0b16;
+    text-align: center;
+    width: 10%;
+}
+
+.row-date-even {
+    font-size: 20px;
+    color: #0e0b16;
+    margin-left: 4%;
+    width: 25%;
+}
