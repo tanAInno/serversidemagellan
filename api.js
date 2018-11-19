@@ -19,4 +19,18 @@ app.use('/aismagellan/things', (req, res) => {
   })
 })
 
-app.listen(6000)
+app.use('/aismagellan/things2', (req, res) => {
+  fetch('https://www.aismagellan.io/api/things/pull/67146970-e724-11e8-a028-9771a15972bf')
+  .then(res => {
+    if(!res.ok) throw res.body
+    return res.json()
+  })
+  .then(json => {
+    res.json(json)
+  })
+  .catch(err => {
+    res.json(err)
+  })
+})
+
+app.listen(5000)

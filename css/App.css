@@ -27,9 +27,7 @@ body, html {
     justify-content: center;
     align-items: center;
     border: 1px solid #E7EFDD;
-    position: fixed;
-    top: 0;
-    left: 0;
+    margin-top: -7px;
 }
 
 .header-text-wrapper {
@@ -54,6 +52,7 @@ body, html {
     flex: 1;
     flex-direction: column;
     align-items: center;
+    margin-top: -5px;
 }
 
 .device-name {
@@ -133,7 +132,7 @@ body, html {
     flex-direction: column;
     width: 90%;
     border: 2px solid #E7EFDD;
-    margin-top: 30px;
+    margin-top: 20px;
     background: #333238;
 }
 
@@ -273,4 +272,30 @@ body, html {
     color: #0e0b16;
     margin-left: 4%;
     width: 25%;
+}
+
+.filter-container {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    width: 80%;
+    height: 100px;
+    border: 3px solid #170c3f;
+    border-radius: 5px;
+    background: #E7EFDD;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.date-text {
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.date-picker{
+    height: 30px;
+    font-size: 20px;
+    margin-right: 10px;
 }

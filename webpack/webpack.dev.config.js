@@ -4,7 +4,7 @@ var path = require('path');
 var parentDir = path.join(__dirname, '../');
 
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
-const HOST = process.env.HOST || 'localhost';
+const HOST = process.env.HOST || '192.168.27.199';
 const PORT = process.env.PORT || 5050;
 
 const METADATA = Object.assign({}, {
@@ -32,7 +32,28 @@ module.exports = {
                   { loader: "style-loader" },
                   { loader: "css-loader" }
                 ]
-              }
+            },{
+                test: /\.woff/, 
+                loader: 'url-loader?limit=10000&minetype=application/font-woff'
+            },{
+                test: /\.woff2/, 
+                loader: 'url-loader?limit=10000&minetype=application/font-woff'
+            },{
+                test: /\.eot/, 
+                loader: 'file-loader'
+            },{
+                test: /\.ttf/, 
+                loader: 'file-loader'
+            },{
+                test: /\.svg/, 
+                loader: 'file-loader'
+            },{
+                test: /\.gif$/, 
+                loader: "url-loader?mimetype=image/png"
+            },{
+                test: /\\.(gif|ttf|eot|svg|woff2?)$/,
+                use: 'url-loader?name=[name].[ext]',
+            }
         ]
     },
     output: {
