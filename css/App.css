@@ -285,17 +285,32 @@ body, html {
     background: #E7EFDD;
     margin-top: 20px;
     align-items: center;
-    justify-content: center;
 }
 
 .date-text {
     font-size: 30px;
     font-weight: bold;
     margin-right: 10px;
+    color: #0e0b16;
 }
 
 .date-picker{
     height: 30px;
     font-size: 20px;
     margin-right: 10px;
+}
+
+.module-select{
+    width: 20%;
+    margin-right: 15px;
+    margin-left: 10%;
+}
+
+.filter-text{
+    float: left;
+    margin-bottom: 60px;
+    margin-left: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #0e0b16;
 }

@@ -7,13 +7,24 @@ import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import 'react-widgets/dist/css/react-widgets.css';
 import moment from "moment";
+import Select from 'react-select';
+
+const options = [
+    { value: 'All', label: 'All'},
+    { value: 'DHT21Temp/Hum', label: 'DHT21Temp/Hum' },
+    { value: 'IAQ', label: 'IAQ' }
+]
 
 class History extends Component {
 
     state = {
         log_list: [],
-        from_date: moment(),
-        to_date: moment()
+        iaq_list: [],
+        dht_list: [],
+        temp_list: [],
+        from_date: "",
+        to_date: "",
+        selectedOption: null
     }
 
     componentDidMount(){
@@ -32,9 +43,15 @@ class History extends Component {
         let sec = time[2]
         let timeformat = year+"-"+month+"-"+day+" "+hour+":"+min+":"+sec
         let timesec = moment(timeformat)
-        let fromtimesec = moment(this.state.from_date.format("YYYY-MM-DD HH:mm:ss"))
-        let totimesec = moment(this.state.to_date.format("YYYY-MM-DD HH:mm:ss"))
-        if(timesec >= fromtimesec && totimesec >= timesec)
+        let fromtimesec = ""
+        let totimesec = ""
+        if(this.state.from_date != null && this.state.from_date != "")
+            fromtimesec = moment(this.state.from_date.format("YYYY-MM-DD HH:mm:ss"))
+        if(this.state.to_date != null && this.state.to_date != "")
+            totimesec = moment(this.state.to_date.format("YYYY-MM-DD HH:mm:ss"))
+        if(timesec >= fromtimesec && totimesec >= timesec ||
+            timesec >= fromtimesec && (totimesec == "" || totimesec == null) ||
+            totimesec >= timesec && (fromtimesec == "" || fromtimesec == null))
             return true
         else
             return false
@@ -42,9 +59,13 @@ class History extends Component {
 
     filterLog(){
         let temp_log_list = []
-        for(let i=0; i<this.props.HistoryReducer.log_list.length; i++){
-            if(this.getDateTimeDiffer(this.props.HistoryReducer.log_list[i].Date))
-                temp_log_list.push(this.props.HistoryReducer.log_list[i])
+        console.log("Fromdate : ", this.state.from_date)
+        console.log("Todate : ", this.state.to_date)
+        for(let i=0; i<this.state.temp_list.length; i++){
+            if( (this.state.from_date == "" && this.state.to_date == "") ||
+                (this.state.from_date == null && this.state.to_date == null) ||
+                this.getDateTimeDiffer(this.state.temp_list[i].Date))
+                    temp_log_list.push(this.state.temp_list[i])
         }
         this.setState({log_list : temp_log_list})
     }
@@ -71,8 +92,18 @@ class History extends Component {
             })
             this.props.dispatch(setLog(log_list))
             this.setState({log_list:this.props.HistoryReducer.log_list})
+            this.setState({temp_list: this.props.HistoryReducer.log_list})
+            let temp_iaq_list = []
+            let temp_dht_list = []
+            for(let i=0; i<this.state.log_list.length; i++){
+                if(this.state.log_list[i].name == "IAQ")
+                    temp_iaq_list.push(this.state.log_list[i])
+                if(this.state.log_list[i].name == "DHT21Temp/Hum")
+                    temp_dht_list.push(this.state.log_list[i])
+            }
+            this.setState({iaq_list: temp_iaq_list})
+            this.setState({dht_list: temp_dht_list})
         })
-
     }
 
     renderRow(data,index){
@@ -100,10 +131,28 @@ class History extends Component {
         }
     }
 
+    handleChange = (selectedOption) => {
+        this.setState({ selectedOption });
+        console.log(`Option selected:`, selectedOption);
+        if(selectedOption.value == "DHT21Temp/Hum")
+            this.setState({temp_list: this.state.dht_list},() => this.filterLog())
+        if(selectedOption.value == "IAQ")
+            this.setState({temp_list: this.state.iaq_list},() => this.filterLog())
+        if(selectedOption.value == "All")
+            this.setState({temp_list: this.props.HistoryReducer.log_list},() => this.filterLog())
+    }
+
     render(){
         return(
             <div className="content">
                 <div className="filter-container">
+                    <div className="filter-text">Filter</div>
+                    <Select
+                        value={this.state.selectedOption}
+                        onChange={this.handleChange}
+                        options={options}
+                        className="module-select"
+                    />
                     <div className="date-text">From</div>
                         <DatePicker
                             className="date-picker"
@@ -114,6 +163,7 @@ class History extends Component {
                             timeFormat="HH:mm"
                             timeIntervals={15}
                             timeCaption="time"
+                            placeholderText="Select initial time"
                         />
                     <div className="date-text">To</div>
                         <DatePicker
@@ -125,6 +175,7 @@ class History extends Component {
                             timeFormat="HH:mm"
                             timeIntervals={15}
                             timeCaption="time"
+                            placeholderText="Select final time"
                         />
                 </div>
                 <div className="table">
