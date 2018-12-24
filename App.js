@@ -43,7 +43,7 @@ class App extends Component {
 
     async postData1(){
         console.log("post")
-        await axios.post("http://localhost:8080/api/magellans/",{
+        await axios.post("http://203.154.132.69:8080/api/magellans/",{
             name: "DHT21Temp/Hum",
             PM2_5: this.props.MonitorReducer.data1.PM2_5,
             Temperature: this.props.MonitorReducer.data1.Temperature,
@@ -59,7 +59,7 @@ class App extends Component {
 
     async postData2(){
         console.log("post")
-        await axios.post("http://localhost:8080/api/magellans/",{
+        await axios.post("http://203.154.132.69:8080/api/magellans/",{
             name: "IAQ",
             PM2_5: this.props.MonitorReducer.data2.PM2_5,
             Temperature: this.props.MonitorReducer.data2.Temperature,
@@ -74,7 +74,7 @@ class App extends Component {
     }
 
     async getData1(){
-        await fetch("http://localhost:5000/aismagellan/things")
+        await fetch("http://203.154.132.69:5000/aismagellan/things")
         .then(response => 
             response.json()).then(json => {
                 this.props.dispatch(setData1(json))
@@ -82,7 +82,7 @@ class App extends Component {
     }
 
     async getData2(){
-        await fetch("http://localhost:5000/aismagellan/things2")
+        await fetch("http://203.154.132.69:5000/aismagellan/things2")
         .then(response => 
             response.json()).then(json => {
                 this.props.dispatch(setData2(json))

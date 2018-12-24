@@ -33,4 +33,4 @@ app.use('/aismagellan/things2', (req, res) => {
   })
 })
 
-app.listen(5000)
+app.listen(6000)

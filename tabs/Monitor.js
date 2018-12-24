@@ -24,11 +24,20 @@ class Monitor extends Component{
     }
 
     renderCO2Number(CO2){
-        return(
-            <div className="data-number-green">
-                {CO2}
-            </div>
-        )
+	if(CO2 <= 5000){
+	    return(
+		<div className="data-number-green">
+		    {CO2}
+		</div>
+            )
+        }
+        else{
+            return(
+                <div className="data-number-red">
+                    {CO2}
+                </div>
+            )
+        }
     }
 
     renderTempNumber(Temp){
@@ -83,11 +92,20 @@ class Monitor extends Component{
     }
 
     renderCO2Status(CO2){
-        return(
-            <div className="data-status-good">
-                Good
-            </div>
-        )
+	if(CO2 <= 5000){
+	    return(
+		<div className="data-status-good">
+		    Good
+		</div>
+	    )
+	}
+	else{
+	    return(
+	        <div className="data-status-bad">
+                    Bad
+                </div>
+            )	
+	}
     }
 
     renderTempStatus(Temp){

@@ -4,13 +4,12 @@ var path = require('path');
 var parentDir = path.join(__dirname, '../');
 
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
-const HOST = process.env.HOST || '192.168.26.234';
-const PORT = process.env.PORT || 5050;
+const HOST = '0.0.0.0';
+const PORT = process.env.PORT || 6060;
 
 const METADATA = Object.assign({}, {
     host: HOST,
-    port: PORT,
-    PUBLIC: process.env.PUBLIC_DEV || HOST + ':' + PORT
+    port: PORT
 });
 
 module.exports = {
@@ -65,7 +64,6 @@ module.exports = {
         contentBase: parentDir,
         historyApiFallback: true,
         port: METADATA.port,
-        host: METADATA.host,
-        public: METADATA.PUBLIC,
+        host: METADATA.host
     }
 }

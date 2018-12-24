@@ -79,7 +79,7 @@ class History extends Component {
     }
 
     async getLog(){
-        await axios.get("http://localhost:8080/api/magellans/")
+        await axios.get("http://203.154.132.69:8080/api/magellans/")
         .then(response => {
             const log_list = response.data.data.map(c => {
                 return({
